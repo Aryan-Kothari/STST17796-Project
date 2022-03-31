@@ -7,16 +7,18 @@ import java.util.ArrayList;
  * given.
  *
  *
- * @author Aryan Kothari & Jinal Jadav; March 2021
+ * @author Aryan Kothari, Jinal Jadav & Amaan Sheikh; March 2021
  */
 public abstract class Game {
 
     private final String name;//the title of the game
     private ArrayList<Player> players;// the players of the game
+    private CardPool card_pool;
 
     public Game(String name) {
         this.name = name;
-        players = new ArrayList();
+        this.players = new ArrayList<Player>();
+        // add implementation for card generation
     }
 
     /**

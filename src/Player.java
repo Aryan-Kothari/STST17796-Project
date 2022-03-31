@@ -2,11 +2,12 @@
 /**
  * A class that models each Player in the game. Players have an identifier, which should be unique.
  *
- * @author Aryan Kothari & Jinal Jadav; March 2021
+ * @author Aryan Kothari, Jinal Jadav & Amaan Sheikh; March 2021
  */
 public abstract class Player {
 
     private String name; //the unique name for this player
+    private GroupOfCards cards;
 
     /**
      * A constructor that allows you to set the player's unique ID

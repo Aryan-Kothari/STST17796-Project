@@ -5,16 +5,65 @@
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CardPool {
-    private ArrayList<Card> junk;
-    private ArrayList<Card> drawable;
-    private Card topJunkCard;
+    private final ArrayList<Card> junk = new ArrayList<Card>();
+    private final ArrayList<Card> drawable = new ArrayList<Card>();
 
-    public CardPool(ArrayList<Card> allCards) {
-        this.junk = new ArrayList<Card>();
-        this.drawable = allCards;
-        this.topJunkCard = allCards.get(0); // gets the top most card in the drawable card pool to start the junk pool.
+    public CardPool() {
+
+        // add two of each card at value i. Total cards should be 76
+
+        for (Card.ColorsOfCards color : Card.ColorsOfCards.values()){ // for each color of card
+            // standard number cards
+            for (int i = 0; i < 10; i++){ // 0 -> 9 cards
+                // add two
+                this.drawable.add(new StandardCard(Card.TypesOfCards.StandardNumber, color, i));
+                this.drawable.add(new StandardCard(Card.TypesOfCards.StandardNumber, color, i));
+
+            }
+
+
+            // special cards (only 8)
+            for (int i = 0; i < 8; i++){
+                this.drawable.add(new SpecialCard(Card.TypesOfCards.Skip, color));
+                this.drawable.add(new SpecialCard(Card.TypesOfCards.Skip, color));
+
+                this.drawable.add(new SpecialCard(Card.TypesOfCards.Draw, color));
+                this.drawable.add(new SpecialCard(Card.TypesOfCards.Draw, color));
+
+            }
+
+        }
+
+
+
+
+
+
+        // randomize drawable pile
+        this.randomizeDrawableCardPool();
+
+        // move top drawable card to junk pile
+        this.junk.add(this.drawable.get(0));
+        this.drawable.remove(0); // delete from drawable
+
+
+
+    }
+
+    public void showCards(){
+        // displays the cards in both arraylists
+        System.out.println(">>>>>>>>>> JUNK <<<<<<<<<<\n");
+
+        junk.forEach(System.out::println);
+        System.out.println("\n");
+
+        System.out.println(">>>>>>>>>> DRAWABLE <<<<<<<<<<\n");
+        drawable.forEach(System.out::println);
+
+
     }
 
     public Card drawCard() {
@@ -22,20 +71,21 @@ public class CardPool {
         return this.drawable.get(0);
     }
 
-    public static void randomizeDrawableCardPool() {
+    public void randomizeDrawableCardPool() {
         // randomize the arraylist of drawable cards
-
+        Collections.shuffle(this.drawable);
     }
 
     public void moveToJunk(Card card) {
         // when a card that is currently in play is used, it will be moved to the junk pile
         // and will then be the top most card.
+        this.junk.add(card);
+
 
     }
 
     public Card getTopJunkCard() {
-        return this.topJunkCard;
+        return this.junk.get(this.junk.size() - 1);
     }
-
 
 }

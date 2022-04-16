@@ -7,7 +7,7 @@
 public abstract class Player {
 
     private String name; //the unique name for this player
-    private GroupOfCards cards;
+    public GroupOfCards cards;
 
     /**
      * A constructor that allows you to set the player's unique ID
@@ -63,10 +63,9 @@ class UnoPlayer extends Player {
      * @param name the unique ID to assign to this player.
      */
 
-    public GroupOfCards cards = new GroupOfCards();
-
     public UnoPlayer(String name) {
         super(name);
+        cards = new GroupOfCards();
     }
 
     @Override

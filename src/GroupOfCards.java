@@ -27,22 +27,26 @@ public class GroupOfCards {
         return cards;
     }
 
-    public void shuffle() {
-        Collections.shuffle(cards);
-    }
+
 
     /**
      * @return the size of the group of cards
      */
     public int getSize() {
-        return size;
+        return this.cards.size();
     }
 
-    /**
-     * @param size the max size for the group of cards
-     */
-    public void setSize(int size) {
-        this.size = size;
+    public Card removeCard(int index){
+        // returns card so it can be used as the new top junk card
+        Card return_card = this.cards.get(index);
+        this.cards.remove(index);
+        return return_card;
+
+    }
+
+
+    public void addCard(Card newCard){
+        this.cards.add(newCard);
     }
 
 }//end class

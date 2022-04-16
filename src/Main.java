@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Uno game = new Uno();
 
-        game.setPlayers(generate_players(10));
-
+        game.setPlayers(generate_players(2));
+        game.dealStartingCards();
 
         game.play();
 

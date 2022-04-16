@@ -6,6 +6,10 @@
  * @author Aryan Kothari, Jinal Jadav & Amaan Sheikh; March 2021
  */
 public abstract class Card {
+    protected String state;
+
+    public abstract void flipCardState();
+
     //default modifier for child classes
     enum TypesOfCards {StandardNumber, Skip, Draw}
 
@@ -55,7 +59,12 @@ class StandardCard extends Card {
 
     @Override
     public String toString() {
-        return String.format("StandardCard(%s, %s)", this.number, this.color);
+        return String.format("[%s, %s]", this.number, this.color);
+    }
+
+    @Override
+    public void flipCardState(){
+
     }
 }
 
@@ -63,11 +72,17 @@ class SpecialCard extends Card{
 
     public SpecialCard(TypesOfCards type, ColorsOfCards color) {
         super(type, color);
+        this.state = "active";
+
+    }
+
+    public void flipCardState(){
+        this.state = null;
     }
 
 
     @Override
     public String toString() {
-        return String.format("SpecialCard(%s, %s)", this.cardType, this.color);
+        return String.format("[%s, %s]", this.cardType, this.color);
     }
 }

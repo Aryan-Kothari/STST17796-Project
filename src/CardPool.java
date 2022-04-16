@@ -23,24 +23,16 @@ public class CardPool {
                 this.drawable.add(new StandardCard(Card.TypesOfCards.StandardNumber, color, i));
 
             }
+             // add two of each special card for this color.
+            this.drawable.add(new SpecialCard(Card.TypesOfCards.Skip, color));
+            this.drawable.add(new SpecialCard(Card.TypesOfCards.Skip, color));
+
+            this.drawable.add(new SpecialCard(Card.TypesOfCards.Draw, color));
+            this.drawable.add(new SpecialCard(Card.TypesOfCards.Draw, color));
 
 
-            // special cards (only 8)
-            for (int i = 0; i < 8; i++){
-                this.drawable.add(new SpecialCard(Card.TypesOfCards.Skip, color));
-                this.drawable.add(new SpecialCard(Card.TypesOfCards.Skip, color));
-
-                this.drawable.add(new SpecialCard(Card.TypesOfCards.Draw, color));
-                this.drawable.add(new SpecialCard(Card.TypesOfCards.Draw, color));
-
-            }
 
         }
-
-
-
-
-
 
         // randomize drawable pile
         this.randomizeDrawableCardPool();
@@ -68,7 +60,13 @@ public class CardPool {
 
     public Card drawCard() {
         // gets the top most card then removes it from the arraylist.
-        return this.drawable.get(0);
+        if (this.drawable.size() == 0){ // if drawable pile is empty
+            this.reShuffle();
+        }
+
+        Card drawnCard = this.drawable.get(0);
+        this.drawable.remove(0);
+        return drawnCard;
     }
 
     public void randomizeDrawableCardPool() {
@@ -86,6 +84,28 @@ public class CardPool {
 
     public Card getTopJunkCard() {
         return this.junk.get(this.junk.size() - 1);
+    }
+
+    public int drawCount(){
+        return this.drawable.size();
+    }
+    public int junkCount(){
+        return this.drawable.size();
+    }
+
+    public void reShuffle(){
+
+        this.drawable.addAll(this.junk); // add all junk cards back to the drawable pool
+//        this.junk.removeAll(this.junk); // empty the junk arraylist
+        for (Card junkCard : this.junk){
+            this.junk.remove(junkCard);
+        }
+
+        this.randomizeDrawableCardPool();
+
+        // move top drawable card to junk pile
+        this.junk.add(this.drawable.get(0));
+        this.drawable.remove(0); // delete from drawable
     }
 
 }

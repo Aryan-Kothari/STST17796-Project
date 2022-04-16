@@ -1,3 +1,4 @@
+package main;
 
 /**
  * A class that models each Player in the game. Players have an identifier, which should be unique.

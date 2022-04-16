@@ -1,4 +1,4 @@
-/**
+package main; /**
  * This class will manage all the cards that are in the junk card pool and the drawable card pool.
  *
  * @author Aryan Kothari, Jinal Jadav & Amaan Sheikh; March 2021

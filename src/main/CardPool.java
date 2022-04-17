@@ -6,6 +6,7 @@ package main; /**
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class CardPool {
     private final ArrayList<Card> junk = new ArrayList<Card>();
@@ -45,15 +46,13 @@ public class CardPool {
 
     }
 
-    public void showCards(){
+    public ArrayList<Card> getPile(String pile){
         // displays the cards in both arraylists
-        System.out.println(">>>>>>>>>> JUNK <<<<<<<<<<\n");
-
-        junk.forEach(System.out::println);
-        System.out.println("\n");
-
-        System.out.println(">>>>>>>>>> DRAWABLE <<<<<<<<<<\n");
-        drawable.forEach(System.out::println);
+        if (Objects.equals(pile, "drawable")){
+            return this.drawable;
+        }else {
+            return this.junk;
+        }
 
 
     }
@@ -90,16 +89,13 @@ public class CardPool {
         return this.drawable.size();
     }
     public int junkCount(){
-        return this.drawable.size();
+        return this.junk.size();
     }
 
     public void reShuffle(){
 
         this.drawable.addAll(this.junk); // add all junk cards back to the drawable pool
-//        this.junk.removeAll(this.junk); // empty the junk arraylist
-        for (Card junkCard : this.junk){
-            this.junk.remove(junkCard);
-        }
+        this.junk.clear();
 
         this.randomizeDrawableCardPool();
 

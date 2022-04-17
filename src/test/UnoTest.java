@@ -6,6 +6,11 @@ import org.junit.Before;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
+/**
+ * Requires JUnit4 & Java 16
+ * @author Aryan Kothari, Jinal Jadav & Amaan Sheikh; March 2021
+ */
+
 
 public class UnoTest {
     public Game game;
@@ -83,10 +88,5 @@ public class UnoTest {
                         new StandardCard(Card.TypesOfCards.StandardNumber, Card.ColorsOfCards.Red, 7)
                 )
         );
-
-
-
-
-
     }
 }

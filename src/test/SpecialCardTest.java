@@ -6,6 +6,11 @@ import main.SpecialCard;
 
 import static org.junit.Assert.*;
 
+/**
+ * Requires JUnit4 & Java 16
+ * @author Aryan Kothari, Jinal Jadav & Amaan Sheikh; March 2021
+ */
+
 public class SpecialCardTest {
 
     @org.junit.Test

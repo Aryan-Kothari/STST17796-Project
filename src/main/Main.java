@@ -2,9 +2,15 @@ package main;
 
 import java.util.ArrayList;
 
+
+/**
+ *@author Aryan Kothari, Jinal Jadav & Amaan Sheikh; March 2021
+ *
+ */
+
 public class Main {
     public static void main(String[] args) throws Exception {
-        Uno game = new Uno();
+        Uno game = new Uno(); // Uno
 
         game.setPlayers(generate_players(2));
         game.dealStartingCards();
@@ -14,9 +20,11 @@ public class Main {
     }
 
 
-
-
-
+    /**
+     * Generates sample players
+     * @param amount number of players to make
+     * @return arraylist of generated players
+     */
     public static ArrayList<Player> generate_players(int amount){
         // for testing
 

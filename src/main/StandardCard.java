@@ -1,5 +1,9 @@
 package main;
 
+/**
+ * Extends Card class. Used to make a standard card, which contains a number attribute, and no state attribute.
+ * @author Aryan Kothari, Jinal Jadav & Amaan Sheikh; March 2021
+ */
 public class StandardCard extends Card {
 
     public StandardCard(TypesOfCards type, ColorsOfCards color, int number) {
@@ -18,6 +22,9 @@ public class StandardCard extends Card {
         return String.format("[%s, %s]", this.number, this.color);
     }
 
+    /**
+     * The implementation of this function is not required for this sub class.
+     */
     @Override
     public void flipCardState() {
 

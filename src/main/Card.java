@@ -20,6 +20,12 @@ public abstract class Card {
     public int number;
     public TypesOfCards cardType;
 
+    /**
+     * To initialize card class that has a number
+     * @param type type of card
+     * @param color color of card
+     * @param number number of card
+     */
     public Card(TypesOfCards type, ColorsOfCards color, int number) {
 
         this.cardType = type;
@@ -27,6 +33,11 @@ public abstract class Card {
         this.number = number;
     }
 
+    /**
+     * to initialize a card object that does not have a number (special card)
+     * @param type type of card
+     * @param color color of card
+     */
     public Card(TypesOfCards type, ColorsOfCards color){
 
         this.cardType = type;

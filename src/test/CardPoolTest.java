@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 
 public class CardPoolTest {
 
-
     @org.junit.Test
     public void testGetPile() {
         System.out.println("testGetPile");
@@ -61,7 +60,6 @@ public class CardPoolTest {
         System.out.println("testDrawCount");
         int expResult = 95;
         int card_count =  new CardPool().drawCount();
-        System.out.println(card_count);
         assertEquals(expResult, card_count);
     }
 

@@ -7,14 +7,14 @@ package main;
  * @author Aryan Kothari, Jinal Jadav & Amaan Sheikh; March 2021
  */
 public abstract class Card {
-    protected String state;
+    public String state;
 
     public abstract void flipCardState();
 
     //default modifier for child classes
-    enum TypesOfCards {StandardNumber, Skip, Draw}
+    public enum TypesOfCards {StandardNumber, Skip, Draw}
 
-    enum ColorsOfCards {Blue, Green, Red, Yellow}
+    public enum ColorsOfCards {Blue, Green, Red, Yellow}
 
     public ColorsOfCards color;
     public int number;
@@ -45,45 +45,3 @@ public abstract class Card {
 
 }
 
-class StandardCard extends Card {
-
-    public StandardCard(TypesOfCards type, ColorsOfCards color, int number) {
-        super(type, color, number);
-    }
-
-    /**
-     * Students should implement this method for their specific children classes
-     *
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
-     */
-
-
-    @Override
-    public String toString() {
-        return String.format("[%s, %s]", this.number, this.color);
-    }
-
-    @Override
-    public void flipCardState(){
-
-    }
-}
-
-class SpecialCard extends Card{
-
-    public SpecialCard(TypesOfCards type, ColorsOfCards color) {
-        super(type, color);
-        this.state = "active";
-
-    }
-
-    public void flipCardState(){
-        this.state = null;
-    }
-
-
-    @Override
-    public String toString() {
-        return String.format("[%s, %s]", this.cardType, this.color);
-    }
-}

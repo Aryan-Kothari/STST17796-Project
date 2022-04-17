@@ -46,54 +46,12 @@ public abstract class Player {
         return this.getName();
     }
 
-    public abstract void play();
 
     public abstract void addCard(Card newCard);
 
-    public abstract void removeCard(Card cardIndexToRemove);
+    public abstract void removeCard(int cardIndexToRemove);
 
     public abstract boolean hasCards();
 
 }
 
-class UnoPlayer extends Player {
-
-    /**
-     * A constructor that allows you to set the player's unique ID
-     *
-     * @param name the unique ID to assign to this player.
-     */
-
-    public UnoPlayer(String name) {
-        super(name);
-        cards = new GroupOfCards();
-    }
-
-    @Override
-    public GroupOfCards getCardGroup() {
-        return this.cards;
-    }
-
-    public void addCard(Card newCard){
-        this.cards.cards.add(newCard);
-    }
-    public void removeCard(Card cardIndexToRemove){
-        this.cards.cards.remove(0);
-    }
-    public boolean hasCards(){
-        return this.cards.cards.size() != 0;
-    }
-
-
-
-    /**
-     * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
-     * with logic to play your game.
-     */
-    @Override
-    public void play() {
-
-    }
-
-
-}

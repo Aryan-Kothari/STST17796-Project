@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Uno game = new Uno(); // Uno
 
-        game.setPlayers(generate_players(2));
+        game.setPlayers(generate_players(3));
         game.dealStartingCards();
 
         game.play();

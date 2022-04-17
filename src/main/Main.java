@@ -1,9 +1,11 @@
 package main;
 
 import java.util.ArrayList;
-
+import java.util.Objects;
+import java.util.Scanner;
 
 /**
+ * Requires Java 16
  *@author Aryan Kothari, Jinal Jadav & Amaan Sheikh; March 2021
  *
  */
@@ -11,8 +13,25 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) throws Exception {
         Uno game = new Uno(); // Uno
+        Scanner scanner = new Scanner(System.in);
 
-        game.setPlayers(generate_players(3));
+        ArrayList<Player> players_to_add = new ArrayList<Player>();
+        while (true){ // register player loop
+            System.out.println("Options:\n" +
+                    "1. Add Player\n" +
+                    "2. Start Game\n" +
+                    "> > > ");
+            String selection = scanner.next();
+            if (Objects.equals(selection, "1")){
+                System.out.println("Enter the players name > > > ");
+                players_to_add.add(new UnoPlayer(scanner.next()));
+            }else if (Objects.equals(selection, "2")){
+                break; // starts game
+            }
+        }
+
+        game.setPlayers(players_to_add); // comment out to use auto generated players.
+//        game.setPlayers(generate_players(3)); // uncomment to use auto generated players.
         game.dealStartingCards();
 
         game.play();
